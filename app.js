@@ -1,10 +1,17 @@
 var express = require('express');
 var app = express();
+var mongoose = require('mongoose')
 var bodyParser = require('body-parser');
-app.use(body-parser.json({limit:'10mb',extended:true}));
-app.use(body-parser.urlencoded({limit:'10mb',extended:true}));
+app.use(bodyParser.json({limit:'10mb',extended:true}));
+app.use(bodyParser.urlencoded({limit:'10mb',extended:true}));
 
 
+var dbPath = "mongodb://localhost/greenGang"
+
+db = mongoose.connect(dbPath);
+mongoose.connection.once('open',function(){
+	console.log("Connected to database!!")
+});
 //fs module, by default module for file management in nodejs
 var fs = require('fs');
 
@@ -17,7 +24,7 @@ fs.readdirSync('./app/model').forEach(function(file){
 });//end for each
 
 //include contrllers
-fs.readdirSync('./app/controller')forEach(function(file){
+fs.readdirSync('./app/controller').forEach(function(file){
 	if(file.indexOf('.js')){
 		//include a file as a route variable
 		var route = require('./app/controller/'+file);
