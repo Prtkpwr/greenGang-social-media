@@ -19,16 +19,16 @@ var response = {
 module.exports.controller = function(app){
 	userRouter.get('/all',function(req,res){
 
-		userModel.find({},function(err,result){
+		userModel.find({},function(err,allUsers){
 			if(err){
 				res.send(err);
 			}
 			else{
-				res.send(result);
+				res.send(allUsers);
 			}
 		})
 
-		res.send("this is route to get all users. Write your db code")
+	//res.send("this is route to get all users. Write your db code")
 	});//end get all users
 
 	userRouter.get('/:userName',function(req,res){

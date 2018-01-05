@@ -34,7 +34,7 @@ var userSchema = new Schema({
   }
 
 
-})
+});
 
 
 mongoose.model('User', userSchema);

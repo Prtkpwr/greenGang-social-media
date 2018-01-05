@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-var mongoose = require('mongoose')
+var mongoose = require('mongoose');
 var bodyParser = require('body-parser');
 app.use(bodyParser.json({limit:'10mb',extended:true}));
 app.use(bodyParser.urlencoded({limit:'10mb',extended:true}));
